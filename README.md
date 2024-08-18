@@ -17,9 +17,7 @@ cd test_test_script
 It's recommended to create a virtual environment:
 python3 -m venv venv
 venv\Scripts\activate    for windows
-pip install -r requirements.txt
 
-install requirements:
 pip install selenium
 pip install pytest pytest-html
 Download WebDriver compatible with your version(check your browser version and download closest webdriver version):
@@ -33,7 +31,7 @@ for example: Chrome: 127.0.6533.120, WebdriverVersion: 127.0.6533.119-win64
              Edge: 127.0.2651.105, WebdriverVersion:127.0.2651.105-x64
 
 
-4. Usage
+5. Usage
 Configure Test Parameters
 In test_warranty.py:
 URL = "https://www.barco.com/en/support/clickshare-extended-warranty/warranty"
@@ -45,7 +43,7 @@ if you only want to test chrome, you could comment/delete other configs:
    #("edge", "1863552437"),
    #("browser-name","serial_number")		#you could use other combination
 ])
-5. Run the Tests
+6. Run the Tests
 
 Run the tests using pytest:  pytest -v -s --html=report.html --self-contained-html --capture=tee-sys will generate report.html under test_scripts
 or execute it on pycharm by right click run Pytests you could see log print on console
