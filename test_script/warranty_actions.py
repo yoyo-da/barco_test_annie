@@ -13,12 +13,15 @@ from selenium.common.exceptions import TimeoutException
 
 
 class WarrantyActions:
+    """This class provide method for test_warranty"""
     def __init__(self, driver=None, logger=None):
+        self.TIMEOUT = 10
         self.driver = driver
-        self.waitdriver = WebDriverWait(self.driver, 10)
+        self.waitdriver = WebDriverWait(self.driver, self.TIMEOUT)
         self.logger = logger
 
-    def _setup_logger(self):
+
+    def setup_logger(self):
         """Setup logger configuration."""
         logger = logging.getLogger(__name__)
         logger.setLevel(logging.INFO)
@@ -29,7 +32,7 @@ class WarrantyActions:
         logger.addHandler(ch)
         return logger
 
-    def _initialize_webdriver(self, browser, url):
+    def initialize_webdriver(self, browser, url):
         """Create and return a WebDriver instance based on the selected browser."""
         if browser == 'chrome':
             chrome_options = ChromeOptions()
@@ -42,10 +45,9 @@ class WarrantyActions:
             self.driver = webdriver.Edge(service=EdgeService(), options=edge_options)
         else:
             raise ValueError(f"Unsupported browser: {browser}")
-
-        self.waitdriver = WebDriverWait(self.driver, 10)  # Assuming a default timeout of 10 seconds
         self.driver.maximize_window()
-        self.driver.implicitly_wait(10)  # Assuming a default timeout of 10 seconds
+        self.waitdriver = WebDriverWait(self.driver, self.TIMEOUT)  # Assuming a default timeout of 10 seconds
+        self.driver.implicitly_wait(self.TIMEOUT)  # Assuming a default timeout of 10 seconds
         self.driver.get(url)
 
     def accept_cookies(self):
@@ -57,9 +59,8 @@ class WarrantyActions:
             )
             accept_button.click()
             self.logger.info("'Accept Cookies' button clicked successfully.")
-        except Exception as e:
+        except:
             self.logger.info(f"No cookie verification needed")
-            self.driver.get_screenshot_as_file("cookie.png")
 
     def enter_serial_and_click(self, serial_number):
         """Enter the serial number and click the 'Get Info' button."""
