@@ -66,12 +66,12 @@ class WarrantyActions:
         """Enter the serial number and click the 'Get Info' button."""
         try:
             self.logger.info(f"Entering serial number: {serial_number}")
-            serial_input = self.driver.find_element(by=By.XPATH, value="(//input[@id='serial'])[1]")
+            serial_input = self.driver.find_element(by=By.XPATH, value="//div[@id='warranty']//input[@id='serial']")
             serial_input.clear()  # Clear any existing text
             serial_input.send_keys(serial_number)
 
             self.logger.info("Clicking the 'Get Info' button.")
-            get_info_button = self.driver.find_element(by=By.XPATH, value="(//button[@type='submit' and contains(text(), 'Get info')])[1]")
+            get_info_button = self.driver.find_element(by=By.XPATH, value="//div[@id='warranty']//button[@type='submit']")
             get_info_button.click()
             self.logger.info("Waiting for the warranty info to be displayed.")
         except Exception as e:
@@ -85,7 +85,7 @@ class WarrantyActions:
         step2. if found warranty_results, save detailed warranty_results as dict 
         """
         try:
-            h5_xpath = "//h5[@class='mt-8 mb-0' and contains(text(), 'Warranty results')]"
+            h5_xpath = "//div[@id='warranty']//h5[@class='mt-8 mb-0']"
             h5_element = self.waitdriver.until(EC.presence_of_element_located((By.XPATH, h5_xpath)))
         except TimeoutException:
             return None, {}
@@ -93,8 +93,8 @@ class WarrantyActions:
             self.logger.error(f"An unexpected error occurred: {e}")
             raise
         displayed_serial_number = h5_element.text.strip().split(" ")[-1]
-        dd_elements = self.driver.find_elements(By.XPATH, "//dl[@class='pt-5 cmp-product-warranty__list']//dd")
-        dt_elements = self.driver.find_elements(By.XPATH, "//dl[@class='pt-5 cmp-product-warranty__list']//dt")
+        dd_elements = self.driver.find_elements(By.XPATH, "//div[@id='warranty']//dl[contains(@class, 'cmp-product-warranty__list')]//dd")
+        dt_elements = self.driver.find_elements(By.XPATH, "//div[@id='warranty']//dl[contains(@class, 'cmp-product-warranty__list')]//dt")
         warranty_results = {dt.text: dd.text for dt, dd in zip(dt_elements, dd_elements)}
         self.driver.get_screenshot_as_file("warranty_result.png")
         return displayed_serial_number, warranty_results
@@ -107,7 +107,7 @@ class WarrantyActions:
         """
         warranty_info = self.get_warranty_info()[-1]
         if not warranty_info:
-            warrany_list_xpath = "//dl[@class='pt-5 cmp-product-warranty__list']"
+            warrany_list_xpath = "//div[@id='warranty']//dl[contains(@class, 'cmp-product-warranty__list')]"
             elements = self.driver.find_elements(By.XPATH, warrany_list_xpath)
             assert len(elements) == 0
             return False
