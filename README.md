@@ -44,9 +44,9 @@ if you only want to test chrome, you could comment/delete other configs:
    #("browser-name","serial_number")		#you could use other combination
 ])
 6. Run the Tests
-
-Run the tests using pytest:  pytest -v -s --html=report.html --self-contained-html --capture=tee-sys will generate report.html under test_scripts
-or execute it on pycharm by right click run Pytests you could see log print on console
+   Run the tests using pytest: 
+   pytest -v -s --html=report.html --self-contained-html --capture=tee-sys, will generate report.html under test_scripts;
+   or execute it on pycharm by right click run Pytests you could see log print on console
 
 The script will:
 a. Launch the specified browser: https://www.barco.com/en/support/clickshare-extended-warranty/warranty.
