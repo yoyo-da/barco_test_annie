@@ -2,7 +2,7 @@ please download https://github.com/yoyo-da/barco_test_annie.
 for quiz1, please check 1_test plan.docx
 for quiz2, please check test_scripts
 for quize3, please check 3_issue.docx
-
+2_readme.ini is for test scripts executions, I have copied details here, so that you could have preview.
 README: Warranty Lookup Automation Script
 1. Project Overview
 This project automates the process of checking product warranty information using Selenium WebDriver and pytest. 
