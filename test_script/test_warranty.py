@@ -41,10 +41,10 @@ class TestWarrantyPage:
             if str(displayed_serial_number).strip() != str(serial_number).strip():
                 self.logger.warning(f"Error: searched for {serial_number}, but returned {displayed_serial_number}.")
             else:
+                print(browser, ":", ('\n'.join(f'{key}: {value}' for key, value in warranty_info.items())))
                 assert 'Warranty end date' in warranty_info
                 assert warranty_info['Warranty end date']
                 assert displayed_serial_number == serial_number
-                print(browser, ":", ('\n'.join(f'{key}: {value}' for key, value in warranty_info.items())))
         except Exception as e:
             self.logger.error(f"An error occurred during the warranty lookup for serial number {serial_number} on {browser}: {str(e)}")
         finally:
