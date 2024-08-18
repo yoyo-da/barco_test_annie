@@ -88,7 +88,7 @@ class WarrantyActions:
             h5_xpath = "//div[@id='warranty']//h5[@class='mt-8 mb-0']"
             h5_element = self.waitdriver.until(EC.presence_of_element_located((By.XPATH, h5_xpath)))
         except TimeoutException:
-            return None, {}
+            return
         except Exception as e:
             self.logger.error(f"An unexpected error occurred: {e}")
             raise
@@ -105,7 +105,7 @@ class WarrantyActions:
         step2. if empty, assert warranty info not displayed, then return False
         step3. else if there's serial_number, then return True
         """
-        warranty_info = self.get_warranty_info()[-1]
+        warranty_info = self.get_warranty_info()
         if not warranty_info:
             warrany_list_xpath = "//div[@id='warranty']//dl[contains(@class, 'cmp-product-warranty__list')]"
             elements = self.driver.find_elements(By.XPATH, warrany_list_xpath)

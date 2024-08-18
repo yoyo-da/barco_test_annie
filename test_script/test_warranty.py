@@ -11,10 +11,10 @@ class TestWarrantyPage:
         cls.logger = WarrantyActions().setup_logger()
 
     @pytest.mark.parametrize("browser, serial_number", [
-        # ("chrome", "1863552437"),
-        # ("firefox", "1863552437"),
+        ("chrome", "1863552437"),
+        ("firefox", "1863552437"),
         ("edge", "1863552437"),
-        ("chrome", "00"),
+        # ("chrome", "00"),
         # Add more browser and serial number combinations as needed
     ])
     def test_warranty_lookup(self, browser, serial_number):
