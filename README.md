@@ -36,9 +36,9 @@ Update the pytest.mark.parametrize decorator to test different browser and seria
 if you only want to test chrome, you could comment/delete other configs:
 @pytest.mark.parametrize("browser, serial_number", [
     ("chrome", "1863552437"),
-#    ("firefox", "1863552437"),
-#    ("edge", "1863552437"),
-#	("browser-name","serial_number")		#you could use other combination
+    #("firefox", "1863552437"),
+    #("edge", "1863552437"),
+    #("browser-name","serial_number")		#you could use other combination
 ])
 5. Run the Tests
 
