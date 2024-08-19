@@ -36,7 +36,7 @@ Configure Test Parameters
 In test_warranty.py:
 URL = "https://www.barco.com/en/support/clickshare-extended-warranty/warranty"
 Update the pytest.mark.parametrize decorator to test different browser and serial number combinations:
-if you only want to test chrome, you could comment/delete other configs:
+For default, it runs on chrome/firefox/edge, if you only want to test chrome, you could comment/delete other configs:
 @pytest.mark.parametrize("browser, serial_number", [
     ("chrome", "1863552437"),
    #("firefox", "1863552437"),
