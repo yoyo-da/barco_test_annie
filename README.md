@@ -18,7 +18,7 @@ cd test_test_script
 It's recommended to create a virtual environment:
 python3 -m venv venv
 venv\Scripts\activate    for windows
-execute command on command prompt
+execute command on command prompt:(please run command prompt by  administator)
 pip install selenium 
 pip install pytest pytest-html
 Download WebDriver compatible with your version(check your browser version and download closest webdriver version):
