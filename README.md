@@ -45,7 +45,8 @@ if you only want to test chrome, you could comment/delete other configs:
 ])
 6. Run the Tests
    Run the tests using pytest: 
-   pytest -v -s --html=report.html --self-contained-html --capture=tee-sys, will generate report.html under test_scripts;
+   pytest -v -s test_warranty.py --html=report.html --self-contained-html --capture=tee-sys, will generate report.html under test_scripts;
+   if you don't want to capture report.html, just use  pytest -v -s test_warranty.py;
    or execute it on pycharm by right click run Pytests you could see log print on console
 
 The script will:
@@ -57,7 +58,7 @@ e. Retrieve and validate the warranty information.
 f. View Logs
 
 6. Troubleshooting
-WebDriver Not Found: Ensure the correct WebDriver is installed and available in the PATH.
+WebDriver Not Found: Ensure the correct WebDriver is installed and available in the PATH or under test_scripts.
 Timeout Issues: If elements take longer to load, consider increasing the timeout duration in WebDriverWait.
 Browser-Specific Issues: Different browsers may behave differently, especially in handling JavaScript or loading elements.
 
