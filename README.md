@@ -10,7 +10,7 @@ This project automates the process of checking product warranty information usin
 The script supports multiple browsers(chrome/firefox/edge), automatically handles cookie consent pop-ups, enters a serial number, and retrieves warranty details for validation.
 
 2. Main Files
-warranty_actions.py: Contains the WarrantyActions class, which handles all actions related to warranty lookup.
+warranty_actions.py: Contains the WarrantyActions class, which encapsulates all actions related to warranty lookup.
 test_warranty.py: Contains the TestWarrantyPage class, which uses pytest to test different browser and serial number combinations.
 3. Installation
 Clone the Repository: git clone https://github.com/yoyo-da/barco_test_annie/tree/main or download the zip file directly.
@@ -45,8 +45,8 @@ For default, it runs on chrome/firefox/edge, if you only want to test chrome, yo
    #("browser-name","serial_number")		#you could use other combination
 ])
 6. Run the Tests
-   Run the tests using pytest: 
-   pytest -v -s test_warranty.py --html=report.html --self-contained-html --capture=tee-sys, will generate report.html under test_scripts;
+   cd test_scripts, then run the tests using pytest: 
+   pytest -v -s --html=report.html --self-contained-html --capture=tee-sys, will generate report.html under test_scripts;
    if you don't want to capture report.html, just use  pytest -v -s test_warranty.py;
    or execute it on pycharm by right click run Pytests you could see log print on console
 
