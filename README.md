@@ -48,6 +48,7 @@ For default, it runs on chrome/firefox/edge, if you only want to test chrome, yo
    cd test_scripts, then run the tests using pytest: 
    pytest -v -s --html=report.html --self-contained-html --capture=tee-sys, will generate report.html under test_scripts;
    if you don't want to capture report.html, just use  pytest -v -s test_warranty.py;
+   if you meet urllib issue, please execute command: pip install selenium urllib3==1.26.16
    or execute it on pycharm by right click run Pytests you could see log print on console
 
 The script will:
