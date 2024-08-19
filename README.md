@@ -1,3 +1,4 @@
+Please read README.md in code view, the format is more clear.
 please download https://github.com/yoyo-da/barco_test_annie.
 for quiz1, please check 1_test plan.docx
 for quiz2, please check test_scripts
